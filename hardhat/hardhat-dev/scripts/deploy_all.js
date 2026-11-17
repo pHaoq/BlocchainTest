@@ -1,4 +1,5 @@
 const { ethers } = require("hardhat");
+const fs = require("fs");
 const { keccak256 } = ethers.utils;
 
 async function main() {
@@ -26,6 +27,15 @@ async function main() {
     const didRegistry = await DIDRegistry.deploy();
     await didRegistry.deployed();
     console.log("DIDRegisstry deployed to:", didRegistry.address);
+
+    // VINTrust: deploy VehiclePassport (deployed last, so the class contract addresses above stay the same)
+    const VehiclePassport = await ethers.getContractFactory("VehiclePassport");
+    const vehiclePassport = await VehiclePassport.deploy();
+    await vehiclePassport.deployed();
+    console.log("VehiclePassport deployed to:", vehiclePassport.address);
+
+    // Save the address so scripts/demo_vintrust.js can find it
+    fs.writeFileSync("deployments.json", JSON.stringify({ VehiclePassport: vehiclePassport.address }, null, 2));
 }
 
 main()

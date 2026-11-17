@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VINTrust - Check a Car</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.6.8/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>VINTrust - Check a Car</h1>
+
+        <div class="form-section">
+            <h2>Vehicle Passport</h2>
+            <label for="contractAddress">VehiclePassport contract address</label>
+            <input type="text" id="contractAddress" value="0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9">
+            <label for="vin">VIN (17 characters)</label>
+            <input type="text" id="vin" value="WVWZZZE1ZMP012345">
+        </div>
+
+        <div class="form-section">
+            <h2>What the advertisement says</h2>
+            <label for="adMileage">Mileage (km)</label>
+            <input type="number" id="adMileage" value="61000">
+            <label for="adBattery">Battery health (%)</label>
+            <input type="number" id="adBattery" value="92">
+            <button id="checkButton">Check history</button>
+        </div>
+
+        <div id="result" style="text-align:left"></div>
+    </div>
+
+    <script src="js/vintrust.js"></script>
+</body>
+</html>
