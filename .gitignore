@@ -1,0 +1,5 @@
+node_modules/
+**/artifacts/
+**/cache/
+.DS_Store
+hardhat/hardhat-dev/deployments.json
