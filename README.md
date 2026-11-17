@@ -5,6 +5,8 @@ This prototype for our HSLU group project builds the core of the VINTrust story 
 > Marco sells his used EV. The ad says **61,000 km and 92 % battery**. Milo, the buyer, enters the VIN
 > and VINTrust shows that a verified garage recorded **81,000 km and 84 %** in 2023.
 
+**New to the code? Read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) first.** It explains the architecture and every part of the code step by step.
+
 The prototype covers the three required building blocks:
 
 | Requirement | What we use | Where |
@@ -182,6 +184,22 @@ the ad values are already filled in. "Open document in IPFS" shows the service r
 cd hardhat
 docker compose run --rm hardhat-dev npm run test
 ```
+
+### 8. Stop everything
+
+Run these from the repo folder:
+
+```bash
+cd ipfs       && docker compose down
+cd ../ssi     && docker compose down
+cd ../hardhat && docker compose down
+```
+
+Also press `Ctrl+C` in the window where the web page server (`python -m http.server`) runs.
+
+* Optional full cleanup: `docker network rm hardhat-network`. You then need step 1 again next time.
+* The blockchain is always gone after `down`. On the next start you get the same addresses again, and you just run the demo again.
+* IPFS files stay in a Docker volume unless you add `-v` to the `down` command.
 
 ---
 
